@@ -1,0 +1,6 @@
+import { FallbackImage } from "@/components/fallback-image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import type { Creator } from "@/lib/content";
+import { getCreatorStories } from "@/lib/content";
+export function CreatorCard({creator}:{creator:Creator}){return <Link href={`/creators/${creator.slug}`} className="soft-card group overflow-hidden transition hover:-translate-y-1 hover:shadow-xl"><div className="relative flex h-44 items-end bg-[#dce4d1] p-5"><FallbackImage src={creator.banner} alt={`Profil ${creator.name}`} className="absolute inset-0 h-full w-full object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-[#1e3024]/65 to-transparent"/><span className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/60 bg-white/80 text-xl font-black">{creator.initials}</span><span className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-extrabold">{getCreatorStories(creator.slug).length} cerita</span></div><div className="p-5"><p className="text-xs font-bold text-[#71834e]">{creator.handle}</p><h3 className="mt-1 flex items-center justify-between text-xl font-extrabold tracking-[-.04em]">{creator.name}<ArrowUpRight size={17}/></h3><p className="mt-3 text-sm leading-6 text-[var(--muted)]">{creator.bio}</p></div></Link>}
