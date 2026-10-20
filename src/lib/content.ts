@@ -1,0 +1,17 @@
+export type Category = "Lingkungan" | "Ekonomi" | "Aksi Sosial";
+export type Creator = { slug:string; name:string; handle:string; bio:string; banner:string; initials:string };
+export type Story = { slug:string; title:string; summary:string; category:Category; creatorSlug:string; image:string; platform:"TikTok"|"YouTube"; sourceUrl:string; readTime:string; dateLabel:string };
+export const creators: Creator[] = [
+ {slug:"jerhemy-owen",name:"Jerhemy Owen",handle:"Kreator lingkungan",bio:"Kreator yang mengangkat isu lingkungan melalui aksi nyata, edukasi, dan eksperimen yang menginspirasi.",banner:"/images/creators/jerhemy-owen/profilejeremy.jpg",initials:"JO"},
+ {slug:"ferry-irwandi",name:"Ferry Irwandi",handle:"Kreator dan komunikator publik",bio:"Kreator yang membahas isu publik dan ekonomi, serta terlibat dalam dokumentasi aksi kemanusiaan di lapangan.",banner:"/images/creators/ferry-irwandi/profileferry.jpg",initials:"FI"}
+];
+export const stories: Story[] = [
+ {slug:"hutan-palangkaraya-karhutla",title:"Hutan Palangkaraya yang Hangus Dilalap Karhutla",summary:"Gambaran lahan yang berubah dari kawasan hijau menjadi kering dan terbuka akibat kebakaran hutan dan lahan di Palangkaraya.",category:"Lingkungan",creatorSlug:"jerhemy-owen",image:"/images/creators/jerhemy-owen/jeremy1.jpg",platform:"TikTok",sourceUrl:"https://vt.tiktok.com/ZSgShWNuM/",readTime:"3 menit",dateLabel:"26 September 2026"},
+ {slug:"pabrik-mini-daur-ulang-plastik",title:"Mengubah Sampah Plastik Menjadi Barang Bernilai",summary:"Eksperimen fasilitas daur ulang mini yang mengolah botol dan tutup plastik menjadi gantungan kunci dan produk lain.",category:"Lingkungan",creatorSlug:"jerhemy-owen",image:"/images/creators/jerhemy-owen/jeremy2.jpg",platform:"YouTube",sourceUrl:"https://www.youtube.com/watch?v=cX3YhGYoHjM",readTime:"4 menit",dateLabel:"Kisah daur ulang"},
+ {slug:"gerakan-tanam-10000-pohon",title:"Gerakan Tanam 10.000 Pohon untuk Memulihkan Lahan Kritis",summary:"Kolaborasi penanaman pohon di wilayah hulu Ciliwung untuk membantu memulihkan lahan kritis dan memantau pertumbuhan pohon.",category:"Lingkungan",creatorSlug:"jerhemy-owen",image:"/images/creators/jerhemy-owen/jeremy3.jpg",platform:"YouTube",sourceUrl:"https://www.youtube.com/watch?v=dQ__BrVGrZI",readTime:"4 menit",dateLabel:"Aksi penghijauan"},
+ {slug:"status-pasar-modal-indonesia",title:"Ancaman Penurunan Status Pasar Modal Indonesia",summary:"Pembahasan tentang transparansi kepemilikan saham, praktik manipulasi pasar, pengawasan, dan potensi dampaknya terhadap ekonomi.",category:"Ekonomi",creatorSlug:"ferry-irwandi",image:"/images/creators/ferry-irwandi/ferry1.jpg",platform:"YouTube",sourceUrl:"http://www.youtube.com/watch?v=hsZzNqL2yVA",readTime:"5 menit",dateLabel:"Analisis ekonomi"},
+ {slug:"misi-bantuan-karhutla-kalimantan",title:"Misi Bantuan Karhutla Kalimantan",summary:"Dokumentasi bantuan logistik, obat-obatan, dan perlengkapan pemadaman bagi tim yang menghadapi kebakaran di lahan gambut.",category:"Aksi Sosial",creatorSlug:"ferry-irwandi",image:"/images/creators/ferry-irwandi/ferry2.jpg",platform:"YouTube",sourceUrl:"http://www.youtube.com/watch?v=-W8l4tLeLwY",readTime:"5 menit",dateLabel:"Respons lapangan"}
+];
+export const getCreator=(slug:string)=>creators.find(c=>c.slug===slug);
+export const getStory=(slug:string)=>stories.find(s=>s.slug===slug);
+export const getCreatorStories=(slug:string)=>stories.filter(s=>s.creatorSlug===slug);
