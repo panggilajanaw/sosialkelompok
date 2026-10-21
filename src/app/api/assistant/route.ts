@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const body = await request.json() as { slug?: string; question?: string; history?: { role: "user" | "assistant"; content: string }[] };
     const question = String(body.question ?? "").trim().slice(0, 1500);
     if (!question) return NextResponse.json({ error: "Tulis pertanyaan dulu, ya." }, { status: 400 });
-    if (!GROQ_API_KEY || GROQ_API_KEY === "PASTE_GROQ_API_KEY_HERE") return NextResponse.json({ error: "Asisten belum diaktifkan. Isi GROQ_API_KEY di file src/lib/groq-config.ts." }, { status: 503 });
+    if (!GROQ_API_KEY) return NextResponse.json({ error: "Asisten belum diaktifkan. Periksa GROQ_API_KEY di src/lib/groq-config.ts." }, { status: 503 });
     const story = body.slug ? getStory(body.slug) : undefined;
     const creator = story ? getCreator(story.creatorSlug) : undefined;
     const context = story ? `Judul: ${story.title}\nKategori: ${story.category}\nKreator: ${creator?.name ?? "Tidak diketahui"}\nRingkasan: ${story.summary}\nSumber: ${story.sourceUrl}` : "Pengunjung sedang berada di halaman asisten umum untuk memahami isu sosial dan lingkungan.";
