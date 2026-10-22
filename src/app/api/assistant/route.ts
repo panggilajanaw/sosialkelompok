@@ -15,9 +15,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Tulis pertanyaan dulu, ya." }, { status: 400 });
     }
 
-    if (!GROQ_API_KEY || GROQ_API_KEY === "GANTI_DENGAN_API_KEY_GROQ_BARU") {
+    if (!GROQ_API_KEY) {
       return NextResponse.json(
-        { error: "API key Groq belum diisi. Masukkan API key baru di src/lib/groq-config.ts." },
+        { error: "API key Groq tidak valid. Periksa src/lib/groq-config.ts." },
         { status: 503 }
       );
     }
