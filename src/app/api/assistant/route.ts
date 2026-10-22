@@ -87,6 +87,7 @@ export async function POST(request: Request) {
       }
 
       console.error("Groq API request failed:", response.status, providerMessage);
+      console.error("Response body:", JSON.stringify(data));
       return NextResponse.json({ error: message }, { status: 502 });
     }
 
