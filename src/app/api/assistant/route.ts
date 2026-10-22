@@ -48,8 +48,7 @@ export async function POST(request: Request) {
       cache: "no-store",
       signal: AbortSignal.timeout(30000),
       body: JSON.stringify({
-        // llama-3.3-70b-versatile was shut down by Groq on 16 Aug 2026.
-        model: "openai/gpt-oss-120b",
+        model: "mixtral-8x7b-32768",
         temperature: 0.55,
         max_completion_tokens: 700,
         messages: [
